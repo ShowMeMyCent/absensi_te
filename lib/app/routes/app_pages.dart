@@ -31,7 +31,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.ADD_EMPLOYEE,
-      page: () => const AddEmployeeView(),
+      page: () => AddEmployeeView(),
       binding: AddEmployeeBinding(),
     ),
     GetPage(

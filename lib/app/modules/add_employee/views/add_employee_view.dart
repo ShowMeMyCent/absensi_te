@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import '../../../controllers/auth_controller.dart';
 import '../controllers/add_employee_controller.dart';
 
 class AddEmployeeView extends GetView<AddEmployeeController> {
-  const AddEmployeeView({Key? key}) : super(key: key);
+  TextEditingController emailC = TextEditingController();
+  TextEditingController passC = TextEditingController();
+
+  final authC = Get.find<AuthController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,6 +114,7 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
 
                             /// Text field untuk Email
                             TextField(
+                              controller: emailC,
                               autocorrect: false,
                               textInputAction: TextInputAction.next,
                               decoration: InputDecoration(
@@ -127,6 +132,7 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
 
                             /// Text field untuk Password
                             TextField(
+                              controller: passC,
                               autocorrect: false,
                               textInputAction: TextInputAction.next,
                               decoration: InputDecoration(
@@ -179,7 +185,9 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
                               width: double.infinity,
                               height: 40,
                               child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  authC.signup(emailC.text, passC.text);
+                                },
                                 style: ElevatedButton.styleFrom(
                                     shape: RoundedRectangleBorder(
                                         borderRadius:
