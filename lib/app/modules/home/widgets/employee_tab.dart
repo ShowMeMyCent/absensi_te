@@ -11,13 +11,10 @@ class EmployeeTab extends StatelessWidget {
       itemCount: 10,
       itemBuilder: (context, index) {
         return ListTile(
-            leading: CircleAvatar(),
-            title: Text('Nama'),
-            subtitle: Text('Posisi'),
-            trailing: ElevatedButton(
-              onPressed: () {},
-              child: Text('test'),
-            ));
+          leading: CircleAvatar(),
+          title: Text('Nama'),
+          subtitle: Text('Posisi'),
+        );
       },
     );
   }

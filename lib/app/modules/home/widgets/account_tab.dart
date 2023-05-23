@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../../controllers/auth_controller.dart';
+
 class AccountTab extends StatelessWidget {
-  const AccountTab({
-    super.key,
-  });
+  final authC = Get.find<AuthController>();
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -126,6 +127,23 @@ class AccountTab extends StatelessWidget {
                             ),
                           ],
                         ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 40,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          authC.logout();
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red[900],
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50))),
+                        child: Text('LOGOUT'),
                       ),
                     ),
                     SizedBox(

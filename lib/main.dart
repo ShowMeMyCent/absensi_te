@@ -1,3 +1,6 @@
+import 'package:absensi_te/app/controllers/auth_controller.dart';
+import 'package:absensi_te/app/modules/splashscreen/views/splashscreen_view.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -15,15 +18,23 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  final authC = Get.put(AuthController(), permanent: true);
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: "Application",
-      debugShowCheckedModeBanner: false,
-      initialRoute: AppPages.INITIAL,
-      getPages: AppPages.routes,
+    return StreamBuilder<User?>(
+      stream: authC.streamAuthStatus,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.active) {
+          return GetMaterialApp(
+            title: "Application",
+            debugShowCheckedModeBanner: false,
+            initialRoute: snapshot.data != null ? Routes.HOME : Routes.LOGIN,
+            getPages: AppPages.routes,
+          );
+        }
+        return SplashscreenView();
+      },
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:absensi_te/app/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -6,8 +7,10 @@ import 'package:lottie/lottie.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
-  const LoginView({Key? key}) : super(key: key);
+  TextEditingController emailC = TextEditingController();
+  TextEditingController passC = TextEditingController();
 
+  final authC = Get.find<AuthController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,11 +37,12 @@ class LoginView extends GetView<LoginController> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       TextField(
+                        controller: emailC,
                         autocorrect: false,
                         textInputAction: TextInputAction.next,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(horizontal: 30),
-                          labelText: 'NIP',
+                          labelText: 'Email',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(50),
                           ),
@@ -47,29 +51,33 @@ class LoginView extends GetView<LoginController> {
                       SizedBox(
                         height: 20,
                       ),
-                      TextField(
-                        obscureText: true,
-                        autocorrect: false,
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(horizontal: 30),
-                          labelText: 'Password',
-                          suffixIcon: Obx(
-                            () {
-                              return IconButton(
-                                onPressed: () {
-                                  controller.isHidden.toggle();
-                                },
-                                icon: Icon((controller.isHidden.value == true)
-                                    ? Icons.remove_red_eye_outlined
-                                    : Icons.remove),
-                              );
-                            },
+                      Obx(() {
+                        return TextField(
+                          controller: passC,
+                          obscureText: controller.isHidden.value,
+                          autocorrect: false,
+                          decoration: InputDecoration(
+                            contentPadding:
+                                EdgeInsets.symmetric(horizontal: 30),
+                            labelText: 'Password',
+                            suffixIcon: Obx(
+                              () {
+                                return IconButton(
+                                  onPressed: () {
+                                    controller.isHidden.toggle();
+                                  },
+                                  icon: Icon((controller.isHidden.value == true)
+                                      ? Icons.remove_red_eye_outlined
+                                      : Icons.remove),
+                                );
+                              },
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(50),
+                            ),
                           ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                        ),
-                      ),
+                        );
+                      }),
                       SizedBox(
                         height: 15,
                       ),
@@ -77,7 +85,9 @@ class LoginView extends GetView<LoginController> {
                         width: double.infinity,
                         height: 40,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            authC.login(emailC.text, passC.text);
+                          },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Color(0xff2B2D76),
                               shape: RoundedRectangleBorder(
