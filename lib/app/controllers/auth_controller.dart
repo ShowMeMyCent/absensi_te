@@ -17,7 +17,6 @@ class AuthController extends GetxController {
     String email,
     String password,
     String notelp,
-    String alamat,
   ) async {
     Get.defaultDialog(
       title: 'CREATE USER',
