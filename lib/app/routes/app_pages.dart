@@ -6,8 +6,12 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
+import '../modules/pengajuan/bindings/pengajuan_binding.dart';
+import '../modules/pengajuan/views/pengajuan_view.dart';
 import '../modules/splashscreen/bindings/splashscreen_binding.dart';
 import '../modules/splashscreen/views/splashscreen_view.dart';
+import '../modules/underDev/bindings/under_dev_binding.dart';
+import '../modules/underDev/views/under_dev_view.dart';
 
 part 'app_routes.dart';
 
@@ -36,6 +40,16 @@ class AppPages {
       name: _Paths.ADD_EMPLOYEE,
       page: () => const AddEmployeeView(),
       binding: AddEmployeeBinding(),
+    ),
+    GetPage(
+      name: _Paths.PENGAJUAN,
+      page: () => const PengajuanView(),
+      binding: PengajuanBinding(),
+    ),
+    GetPage(
+      name: _Paths.UNDER_DEV,
+      page: () => const UnderDevView(),
+      binding: UnderDevBinding(),
     ),
   ];
 }

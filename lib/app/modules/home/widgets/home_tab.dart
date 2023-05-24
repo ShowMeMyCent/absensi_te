@@ -1,3 +1,4 @@
+import 'package:absensi_te/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -170,11 +171,15 @@ class HomeTab extends StatelessWidget {
                                           width: 50,
                                           child: Column(
                                             children: [
-                                              Container(
-                                                height: 30,
-                                                width: 70,
-                                                child: Image.asset(
-                                                    'assets/icons/absensi.png'),
+                                              GestureDetector(
+                                                onTap: () => Get.toNamed(
+                                                    Routes.UNDER_DEV),
+                                                child: Container(
+                                                  height: 30,
+                                                  width: 70,
+                                                  child: Image.asset(
+                                                      'assets/icons/absensi.png'),
+                                                ),
                                               ),
                                               Text(
                                                 'Absensi',
@@ -195,11 +200,15 @@ class HomeTab extends StatelessWidget {
                                           width: 70,
                                           child: Column(
                                             children: [
-                                              Container(
-                                                height: 30,
-                                                width: 30,
-                                                child: Image.asset(
-                                                    'assets/icons/pengajuan.png'),
+                                              GestureDetector(
+                                                onTap: () => Get.toNamed(
+                                                    Routes.PENGAJUAN),
+                                                child: Container(
+                                                  height: 30,
+                                                  width: 30,
+                                                  child: Image.asset(
+                                                      'assets/icons/pengajuan.png'),
+                                                ),
                                               ),
                                               Text(
                                                 'Pengajuan',
@@ -221,11 +230,15 @@ class HomeTab extends StatelessWidget {
                                           width: 70,
                                           child: Column(
                                             children: [
-                                              Container(
-                                                height: 30,
-                                                width: 30,
-                                                child: Image.asset(
-                                                    'assets/icons/kegiatan.png'),
+                                              GestureDetector(
+                                                onTap: () => Get.toNamed(
+                                                    Routes.UNDER_DEV),
+                                                child: Container(
+                                                  height: 30,
+                                                  width: 30,
+                                                  child: Image.asset(
+                                                      'assets/icons/pengajuan.png'),
+                                                ),
                                               ),
                                               Text(
                                                 'Kegiatan',
@@ -246,11 +259,15 @@ class HomeTab extends StatelessWidget {
                                           width: 70,
                                           child: Column(
                                             children: [
-                                              Container(
-                                                height: 30,
-                                                width: 30,
-                                                child: Image.asset(
-                                                    'assets/icons/task.png'),
+                                              GestureDetector(
+                                                onTap: () => Get.toNamed(
+                                                    Routes.UNDER_DEV),
+                                                child: Container(
+                                                  height: 30,
+                                                  width: 30,
+                                                  child: Image.asset(
+                                                      'assets/icons/task.png'),
+                                                ),
                                               ),
                                               Text(
                                                 'Task',
@@ -277,11 +294,15 @@ class HomeTab extends StatelessWidget {
                                                 width: 70,
                                                 child: Column(
                                                   children: [
-                                                    Container(
-                                                      height: 30,
-                                                      width: 30,
-                                                      child: Image.asset(
-                                                          'assets/icons/info.png'),
+                                                    GestureDetector(
+                                                      onTap: () => Get.toNamed(
+                                                          Routes.UNDER_DEV),
+                                                      child: Container(
+                                                        height: 30,
+                                                        width: 30,
+                                                        child: Image.asset(
+                                                            'assets/icons/info.png'),
+                                                      ),
                                                     ),
                                                     Text(
                                                       'Info',
@@ -306,11 +327,15 @@ class HomeTab extends StatelessWidget {
                                           width: 70,
                                           child: Column(
                                             children: [
-                                              Container(
-                                                height: 30,
-                                                width: 30,
-                                                child: Image.asset(
-                                                    'assets/icons/money.png'),
+                                              GestureDetector(
+                                                onTap: () => Get.toNamed(
+                                                    Routes.UNDER_DEV),
+                                                child: Container(
+                                                  height: 30,
+                                                  width: 30,
+                                                  child: Image.asset(
+                                                      'assets/icons/money.png'),
+                                                ),
                                               ),
                                               Text(
                                                 'Gaji',
