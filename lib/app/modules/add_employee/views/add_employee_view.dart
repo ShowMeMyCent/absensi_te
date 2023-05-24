@@ -100,22 +100,22 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
                           ),
 
                           /// Text field untuk Unit
-                          TextField(
-                            controller: controller.unitC,
-                            autocorrect: false,
-                            textInputAction: TextInputAction.next,
-                            decoration: InputDecoration(
-                              contentPadding:
-                                  EdgeInsets.symmetric(horizontal: 30),
-                              labelText: 'Unit',
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
+                          // TextField(
+                          //   controller: controller.unitC,
+                          //   autocorrect: false,
+                          //   textInputAction: TextInputAction.next,
+                          //   decoration: InputDecoration(
+                          //     contentPadding:
+                          //         EdgeInsets.symmetric(horizontal: 30),
+                          //     labelText: 'Unit',
+                          //     border: OutlineInputBorder(
+                          //       borderRadius: BorderRadius.circular(10),
+                          //     ),
+                          //   ),
+                          // ),
+                          // SizedBox(
+                          //   height: 20,
+                          // ),
 
                           /// Text field untuk Email
                           TextField(
