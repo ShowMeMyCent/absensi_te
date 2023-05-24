@@ -13,6 +13,9 @@ dependencies:
   salomon_bottom_bar: 3.3.2
   fl_chart: 0.62.0
   firebase_auth: 4.6.1
+  cloud_firestore: 4.7.1
+  dropdown_search: ^2.0.1
+  http: 1.0.0
   flutter: 
     sdk: flutter
 

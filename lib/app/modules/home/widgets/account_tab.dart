@@ -12,7 +12,7 @@ class AccountTab extends StatelessWidget {
     return SingleChildScrollView(
       child: Stack(
         children: [
-          Container(
+          SizedBox(
             width: Get.width,
             height: Get.height,
             child: Column(
@@ -20,7 +20,7 @@ class AccountTab extends StatelessWidget {
                 Container(
                   height: Get.height / 3.5,
                   width: Get.width,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       gradient: LinearGradient(
                         begin: Alignment.topRight,
                         end: Alignment.bottomLeft,
@@ -143,7 +143,16 @@ class AccountTab extends StatelessWidget {
                             backgroundColor: Colors.red[900],
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50))),
-                        child: Text('LOGOUT'),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('LOGOUT'),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Icon(Icons.logout),
+                          ],
+                        ),
                       ),
                     ),
                     SizedBox(

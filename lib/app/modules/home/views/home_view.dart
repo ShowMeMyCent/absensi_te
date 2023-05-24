@@ -30,8 +30,8 @@ class HomeView extends StatelessWidget {
             body: IndexedStack(
               index: controller.tabIndex,
               children: [
-                HomeTab(),
-                TabBarView(
+                const HomeTab(),
+                const TabBarView(
                   children: [
                     HistoryCutiTab(),
                     HistoryIzinTab(),
