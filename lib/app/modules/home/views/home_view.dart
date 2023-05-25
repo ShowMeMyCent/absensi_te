@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+import 'package:transitioned_indexed_stack/transitioned_indexed_stack.dart';
 
 import '../controllers/home_controller.dart';
 import '../widgets/employee_tab.dart';
@@ -27,7 +28,8 @@ class HomeView extends StatelessWidget {
             appBar: (controller.tabIndex == 1 || controller.tabIndex == 3)
                 ? controller.bottomTabBar()
                 : null,
-            body: IndexedStack(
+            body: FadeIndexedStack(
+              duration: Duration(milliseconds: 400),
               index: controller.tabIndex,
               children: [
                 const HomeTab(),

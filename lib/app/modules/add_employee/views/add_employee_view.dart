@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:absensi_te/app/data/models/province_model.dart';
-import 'package:dio/dio.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 
@@ -14,11 +13,13 @@ import '../controllers/add_employee_controller.dart';
 
 class AddEmployeeView extends GetView<AddEmployeeController> {
   final authC = Get.find<AuthController>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
+        title: Text('Add Employee'),
         centerTitle: true,
         flexibleSpace: Container(
           decoration: const BoxDecoration(
@@ -50,12 +51,9 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(15.0),
-                      child: Text(
-                        'Add New Employee',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 18,
-                        ),
+                      child: Container(
+                        height: 200,
+                        child: Image.asset('assets/images/employee.png'),
                       ),
                     ),
                     Divider(thickness: 1),
@@ -65,6 +63,7 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
                         children: [
                           /// Text field untuk NIP
                           TextField(
+                            keyboardType: TextInputType.number,
                             controller: controller.nipC,
                             autocorrect: false,
                             textInputAction: TextInputAction.next,
@@ -119,6 +118,7 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
 
                           /// Text field untuk Email
                           TextField(
+                            keyboardType: TextInputType.emailAddress,
                             controller: controller.emailC,
                             autocorrect: false,
                             textInputAction: TextInputAction.next,
@@ -155,6 +155,8 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
 
                           /// Text field untuk No telpon
                           TextField(
+                            controller: controller.notelpC,
+                            keyboardType: TextInputType.phone,
                             autocorrect: false,
                             textInputAction: TextInputAction.next,
                             decoration: InputDecoration(
@@ -188,11 +190,14 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
                               ),
                             ),
                             onFind: (text) async {
-                              var response = await Dio().get(
-                                ('https://api.goapi.id/v1/regional/provinsi?api_key=s72bn1UaCwjAe00gXGX1EvUySqwAr6'),
+                              var response = await http.get(
+                                Uri.parse(
+                                    'https://api.goapi.id/v1/regional/provinsi?api_key=s72bn1UaCwjAe00gXGX1EvUySqwAr6'),
                               );
+                              var decodedResponse =
+                                  jsonDecode(response.body) as Map;
                               return Province.fromJsonList(
-                                  response.data['data']);
+                                  decodedResponse['data']);
                             },
                             onChanged: (value) =>
                                 controller.provinceId.value = value?.id ?? '0',
@@ -201,7 +206,7 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
                             height: 20,
                           ),
 
-                          /// Text field untuk Provinsi
+                          /// Text field untuk kota
 
                           DropdownSearch<City>(
                             showSearchBox: true,
@@ -218,12 +223,15 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
                               ),
                             ),
                             onFind: (text) async {
-                              var response = await Dio().get(
-                                ('https://api.goapi.id/v1/regional/kota?provinsi_id=${controller.provinceId}&api_key=s72bn1UaCwjAe00gXGX1EvUySqwAr6'),
-                              );
-                              return City.fromJsonList(response.data['data']);
+                              var response = await http.get(Uri.parse(
+                                  'https://api.goapi.id/v1/regional/kota?provinsi_id=${controller.provinceId}&api_key=s72bn1UaCwjAe00gXGX1EvUySqwAr6'));
+                              var decodedResponse =
+                                  jsonDecode(response.body) as Map;
+                              return City.fromJsonList(decodedResponse['data']);
                             },
-                            onChanged: (value) => print(value?.toJson()),
+                            onChanged: (value) {
+                              controller.cityC.text = '$value';
+                            },
                           ),
                           SizedBox(
                             height: 20,
@@ -237,10 +245,11 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
                                 authC.signup(
                                   controller.nipC.text,
                                   controller.nameC.text,
-                                  controller.unitC.text,
                                   controller.emailC.text,
                                   controller.passC.text,
                                   controller.notelpC.text,
+                                  // controller.provinceC.text,
+                                  controller.cityC.text,
                                 );
                               },
                               style: ElevatedButton.styleFrom(

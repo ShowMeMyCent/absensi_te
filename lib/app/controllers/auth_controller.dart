@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:absensi_te/app/routes/app_pages.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -9,14 +11,14 @@ class AuthController extends GetxController {
   FirebaseFirestore db = FirebaseFirestore.instance;
 
   Stream<User?> get streamAuthStatus => auth.authStateChanges();
-
   void signup(
     String nip,
     String nama,
-    String unit,
     String email,
     String password,
     String notelp,
+    // String province,
+    String kota,
   ) async {
     Get.defaultDialog(
       title: 'CREATE USER',
@@ -30,6 +32,18 @@ class AuthController extends GetxController {
             email: email,
             password: password,
           );
+          final users = <String, String>{
+            "nip": nip,
+            "nama": nama,
+            "email": email,
+            "password": password,
+            "notelp": notelp,
+            // "provinsi": province,
+            "kota": kota,
+          };
+          await db.collection("users").doc(myUser.user!.uid).set(users).onError(
+                (e, _) => print("Error writing document: $e"),
+              );
           await myUser.user!.sendEmailVerification();
           Get.back();
         } on FirebaseAuthException catch (e) {
@@ -57,24 +71,23 @@ class AuthController extends GetxController {
         }
       },
       textCancel: 'CANCEL',
-      onCancel: () => Get.back(),
     );
   }
 
-  void login(String email, String password) async {
+  login(String email, String password) async {
     try {
       UserCredential myUser =
           await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
-      print(myUser);
       if (myUser.user!.emailVerified) {
         Get.offAllNamed(Routes.HOME);
       } else {
         Get.defaultDialog(
           title: 'Email Verified',
           middleText: 'Didnt get the email? click yes',
+          confirmTextColor: Colors.white,
           textConfirm: 'yes',
           onConfirm: () async {
             await myUser.user!.sendEmailVerification();
@@ -89,22 +102,11 @@ class AuthController extends GetxController {
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
-        Get.defaultDialog(
-          title: 'user-not-found',
-          middleText: 'No user found for that email.',
-          textConfirm: 'OK',
-          confirmTextColor: Colors.white,
-          onConfirm: () => Get.back(),
-        );
+        Get.snackbar('user-not-found', 'No user found for that email.');
       } else if (e.code == 'wrong-password') {
         print('Wrong password provided for that user.');
-        Get.defaultDialog(
-          title: 'wrong-password',
-          middleText: 'Wrong password provided for that user.',
-          textConfirm: 'OK',
-          confirmTextColor: Colors.white,
-          onConfirm: () => Get.back(),
-        );
+        Get.snackbar(
+            'wrong-password', 'Wrong password provided for that user.');
       }
     }
   }
