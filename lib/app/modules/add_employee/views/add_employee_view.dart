@@ -63,6 +63,7 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
                         children: [
                           /// Text field untuk NIP
                           TextField(
+                            autofocus: true,
                             keyboardType: TextInputType.number,
                             controller: controller.nipC,
                             autocorrect: false,
@@ -173,7 +174,31 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
                             height: 20,
                           ),
 
-                          /// Text field untuk Provinsi
+                          /// DropdownSearch untuk Level User
+                          DropdownSearch<String>(
+                            items: [
+                              "Admin",
+                              "User",
+                            ],
+                            mode: Mode.MENU,
+                            dropdownSearchDecoration: InputDecoration(
+                              labelText: 'Level',
+                              contentPadding: EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 15),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                            onChanged: (value) {
+                              controller.levelC.text = value!;
+                            },
+                          ),
+
+                          SizedBox(
+                            height: 20,
+                          ),
+
+                          /// DropdownSearch untuk Provinsi
 
                           DropdownSearch<Province>(
                             showSearchBox: true,
@@ -206,7 +231,7 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
                             height: 20,
                           ),
 
-                          /// Text field untuk kota
+                          /// DropdownSearch untuk kota
 
                           DropdownSearch<City>(
                             showSearchBox: true,
@@ -248,7 +273,7 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
                                   controller.emailC.text,
                                   controller.passC.text,
                                   controller.notelpC.text,
-                                  // controller.provinceC.text,
+                                  controller.levelC.text,
                                   controller.cityC.text,
                                 );
                               },

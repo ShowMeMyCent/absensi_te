@@ -11,6 +11,7 @@ class AddEmployeeController extends GetxController {
   TextEditingController emailC = TextEditingController();
   TextEditingController passC = TextEditingController();
   TextEditingController notelpC = TextEditingController();
+  TextEditingController levelC = TextEditingController();
   TextEditingController provinceCx = TextEditingController();
   TextEditingController cityC = TextEditingController();
 

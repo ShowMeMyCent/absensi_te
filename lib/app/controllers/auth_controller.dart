@@ -17,7 +17,7 @@ class AuthController extends GetxController {
     String email,
     String password,
     String notelp,
-    // String province,
+    String level,
     String kota,
   ) async {
     Get.defaultDialog(
@@ -38,33 +38,22 @@ class AuthController extends GetxController {
             "email": email,
             "password": password,
             "notelp": notelp,
-            // "provinsi": province,
+            "level": level,
             "kota": kota,
           };
           await db.collection("users").doc(myUser.user!.uid).set(users).onError(
-                (e, _) => print("Error writing document: $e"),
+                (e, _) => Get.snackbar('Error', 'Gagal Memasukkan data'),
               );
           await myUser.user!.sendEmailVerification();
           Get.back();
         } on FirebaseAuthException catch (e) {
           if (e.code == 'weak-password') {
             print('The password provided is too weak.');
-            Get.defaultDialog(
-              title: 'weak-password',
-              middleText: 'The password provided is too weak.',
-              textConfirm: 'OK',
-              confirmTextColor: Colors.white,
-              onConfirm: () => Get.back(),
-            );
+            Get.snackbar('weak-password', 'The password provided is too weak.');
           } else if (e.code == 'email-already-in-use') {
             print('The account already exists for that email.');
-            Get.defaultDialog(
-              title: 'email-already-in-use',
-              middleText: 'The account already exists for that email.',
-              textConfirm: 'OK',
-              confirmTextColor: Colors.white,
-              onConfirm: () => Get.back(),
-            );
+            Get.snackbar('email-already-in-use',
+                'The account already exists for that email.');
           }
         } catch (e) {
           print(e);

@@ -10,12 +10,14 @@ import 'package:get/get.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:transitioned_indexed_stack/transitioned_indexed_stack.dart';
 
+import '../../../controllers/auth_controller.dart';
 import '../controllers/home_controller.dart';
 import '../widgets/employee_tab.dart';
 import '../widgets/home_tab.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({Key? key}) : super(key: key);
+  final authC = Get.find<AuthController>();
+  final homeC = Get.find<HomeController>();
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class HomeView extends StatelessWidget {
           length: 4,
           child: Scaffold(
             appBar: (controller.tabIndex == 1 || controller.tabIndex == 3)
-                ? controller.bottomTabBar()
+                ? controller.tabBar()
                 : null,
             body: FadeIndexedStack(
               duration: Duration(milliseconds: 400),
