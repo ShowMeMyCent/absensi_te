@@ -27,10 +27,6 @@ class HomeTab extends StatelessWidget {
                       Color.fromARGB(251, 1, 109, 197),
                     ],
                   ),
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(25),
-                    bottomRight: Radius.circular(25),
-                  ),
                 ),
               ),
               Expanded(

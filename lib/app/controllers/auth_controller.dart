@@ -70,8 +70,22 @@ class AuthController extends GetxController {
         email: email,
         password: password,
       );
+      // Retrieve the user document from Firestore
+      DocumentSnapshot userDoc =
+          await db.collection("users").doc(myUser.user!.uid).get();
+
+      // Read the user's level or role from the document
+      String userLevel = (userDoc.data() as Map<String, dynamic>)['level'];
+
       if (myUser.user!.emailVerified) {
-        Get.offAllNamed(Routes.HOME);
+        String initialRoute;
+        if (userLevel == 'admin') {
+          initialRoute = Routes.ADMIN;
+        } else {
+          initialRoute = Routes.HOME;
+        }
+
+        Get.offAllNamed(initialRoute);
       } else {
         Get.defaultDialog(
           title: 'Email Verified',

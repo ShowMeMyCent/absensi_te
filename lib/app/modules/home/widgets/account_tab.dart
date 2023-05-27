@@ -49,17 +49,15 @@ class AccountTab extends StatelessWidget {
                                 height: Get.height / 3.5,
                                 width: Get.width,
                                 decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                      begin: Alignment.topRight,
-                                      end: Alignment.bottomLeft,
-                                      colors: [
-                                        Color.fromARGB(255, 106, 187, 254),
-                                        Color.fromARGB(251, 1, 109, 197),
-                                      ],
-                                    ),
-                                    borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(20),
-                                        bottomRight: Radius.circular(20))),
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topRight,
+                                    end: Alignment.bottomLeft,
+                                    colors: [
+                                      Color.fromARGB(255, 106, 187, 254),
+                                      Color.fromARGB(251, 1, 109, 197),
+                                    ],
+                                  ),
+                                ),
                               ),
                               Expanded(
                                 child: Container(
@@ -164,6 +162,34 @@ class AccountTab extends StatelessWidget {
                                   SizedBox(
                                     height: 10,
                                   ),
+                                  Card(
+                                    child: Container(
+                                      width: Get.width,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.all(10.0),
+                                            child: Text(
+                                              'Activity',
+                                              style: TextStyle(fontSize: 25),
+                                            ),
+                                          ),
+                                          Center(
+                                            child: Container(
+                                              height: 200,
+                                              child: Image.asset(
+                                                  "assets/images/activity.png"),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
                                   SizedBox(
                                     width: double.infinity,
                                     height: 40,
@@ -189,34 +215,6 @@ class AccountTab extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Card(
-                                    child: Container(
-                                      width: Get.width,
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding: EdgeInsets.all(10.0),
-                                            child: Text(
-                                              'Activity',
-                                              style: TextStyle(fontSize: 25),
-                                            ),
-                                          ),
-                                          Center(
-                                            child: Container(
-                                              height: 200,
-                                              child: Lottie.asset(
-                                                  'assets/lottie/activities_animation.json'),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
                                 ],
                               ),
                             ),
@@ -227,7 +225,9 @@ class AccountTab extends StatelessWidget {
                   );
                 }
 
-                return Text("loading");
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
               },
             );
           }
