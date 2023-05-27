@@ -59,17 +59,13 @@ class MyApp extends StatelessWidget {
             // Navigate to the initial route
             Get.offNamed(initialRoute);
           }
-          return FutureBuilder(
-              future: Future.delayed(Duration(seconds: 2)),
-              builder: (context, snapshot) {
-                if (snapshot)
-                  return GetMaterialApp(
-                    title: "Application",
-                    debugShowCheckedModeBanner: false,
-                    initialRoute: AppPages.INITIAL,
-                    getPages: AppPages.routes,
-                  );
-              });
+
+          return GetMaterialApp(
+            title: "Application",
+            debugShowCheckedModeBanner: false,
+            initialRoute: AppPages.INITIAL,
+            getPages: AppPages.routes,
+          );
         }
         return SplashscreenView();
       },
