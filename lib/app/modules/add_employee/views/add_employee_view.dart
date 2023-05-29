@@ -12,7 +12,7 @@ import '../../../data/models/city_model.dart';
 import '../controllers/add_employee_controller.dart';
 
 class AddEmployeeView extends GetView<AddEmployeeController> {
-  final authC = Get.find<AuthController>();
+  final authC = Get.find<MainController>();
 
   @override
   Widget build(BuildContext context) {

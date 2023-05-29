@@ -8,7 +8,6 @@ import 'package:absensi_te/app/modules/home/widgets/statistik_tab.dart';
 
 import 'package:get/get.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
-import 'package:transitioned_indexed_stack/transitioned_indexed_stack.dart';
 
 import '../controllers/home_controller.dart';
 import '../widgets/employee_tab.dart';

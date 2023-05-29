@@ -10,7 +10,7 @@ class LoginView extends GetView<LoginController> {
   TextEditingController emailC = TextEditingController();
   TextEditingController passC = TextEditingController();
 
-  final authC = Get.find<AuthController>();
+  final authC = Get.find<MainController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

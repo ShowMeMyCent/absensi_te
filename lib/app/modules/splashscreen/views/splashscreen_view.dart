@@ -9,6 +9,7 @@ class SplashscreenView extends GetView<SplashscreenController> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Center(
           child: Container(

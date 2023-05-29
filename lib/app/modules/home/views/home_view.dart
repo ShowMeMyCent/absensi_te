@@ -8,14 +8,13 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
-import 'package:transitioned_indexed_stack/transitioned_indexed_stack.dart';
 
 import '../../../controllers/auth_controller.dart';
 import '../controllers/home_controller.dart';
 import '../widgets/home_tab.dart';
 
 class HomeView extends StatelessWidget {
-  final authC = Get.find<AuthController>();
+  final authC = Get.find<MainController>();
   final homeC = Get.find<HomeController>();
 
   @override

@@ -1,10 +1,7 @@
 import 'package:absensi_te/app/controllers/auth_controller.dart';
 import 'package:absensi_te/app/modules/splashscreen/views/splashscreen_view.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 
 import 'app/routes/app_pages.dart';
@@ -19,52 +16,34 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  final authC = Get.put(AuthController(), permanent: true);
+  final authC = Get.put(MainController(), permanent: true);
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<User?>(
-      stream: authC.streamAuthStatus,
+    return FutureBuilder(
+      future: Future.wait([
+        Future.delayed(Duration(seconds: 2)),
+        authC.loadPersistedUserRole(), // Load persisted user role
+      ]),
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.active) {
-          String initialRoute;
-
-          if (snapshot.data != null) {
-            // User is authenticated, retrieve user level from Firestore
-            FirebaseFirestore.instance
-                .collection('users')
-                .doc(snapshot.data!.uid)
-                .get()
-                .then((doc) {
-              if (doc.exists) {
-                String userLevel = doc.data()?['level'];
-
-                if (userLevel == 'admin') {
-                  initialRoute = Routes.ADMIN;
-                } else {
-                  initialRoute = Routes.HOME;
-                }
-              } else {
-                // User document does not exist
-                initialRoute = Routes.LOGIN;
+        if (snapshot.connectionState == ConnectionState.done) {
+          return StreamBuilder(
+            stream: authC.streamAuthStatus,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.active) {
+                return GetMaterialApp(
+                  title: "Application",
+                  debugShowCheckedModeBanner: false,
+                  initialRoute: (snapshot.data == null)
+                      ? Routes.LOGIN
+                      : (authC.isAdmin.value == 'admin')
+                          ? Routes.ADMIN
+                          : Routes.HOME,
+                  getPages: AppPages.routes,
+                );
               }
-
-              // Navigate to the initial route
-              Get.offNamed(initialRoute);
-            });
-          } else {
-            // User is not authenticated, set initial route to login
-            initialRoute = Routes.LOGIN;
-
-            // Navigate to the initial route
-            Get.offNamed(initialRoute);
-          }
-
-          return GetMaterialApp(
-            title: "Application",
-            debugShowCheckedModeBanner: false,
-            initialRoute: AppPages.INITIAL,
-            getPages: AppPages.routes,
+              return SplashscreenView();
+            },
           );
         }
         return SplashscreenView();
