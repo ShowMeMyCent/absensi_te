@@ -172,8 +172,8 @@ class HomeTab extends StatelessWidget {
                                           child: Column(
                                             children: [
                                               GestureDetector(
-                                                onTap: () => Get.toNamed(
-                                                    Routes.UNDER_DEV),
+                                                onTap: () =>
+                                                    Get.toNamed(Routes.ABSENSI),
                                                 child: Container(
                                                   height: 30,
                                                   width: 70,

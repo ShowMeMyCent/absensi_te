@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/absensi/bindings/absensi_binding.dart';
+import '../modules/absensi/views/absensi_view.dart';
 import '../modules/add_employee/bindings/add_employee_binding.dart';
 import '../modules/add_employee/views/add_employee_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -50,6 +52,11 @@ class AppPages {
       name: _Paths.UNDER_DEV,
       page: () => const UnderDevView(),
       binding: UnderDevBinding(),
+    ),
+    GetPage(
+      name: _Paths.ABSENSI,
+      page: () => const AbsensiView(),
+      binding: AbsensiBinding(),
     ),
   ];
 }

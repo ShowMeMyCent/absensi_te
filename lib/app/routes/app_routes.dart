@@ -9,6 +9,7 @@ abstract class Routes {
   static const ADD_EMPLOYEE = _Paths.ADD_EMPLOYEE;
   static const PENGAJUAN = _Paths.PENGAJUAN;
   static const UNDER_DEV = _Paths.UNDER_DEV;
+  static const ABSENSI = _Paths.ABSENSI;
 }
 
 abstract class _Paths {
@@ -19,4 +20,5 @@ abstract class _Paths {
   static const ADD_EMPLOYEE = '/add-employee';
   static const PENGAJUAN = '/pengajuan';
   static const UNDER_DEV = '/under-dev';
+  static const ABSENSI = '/absensi';
 }
