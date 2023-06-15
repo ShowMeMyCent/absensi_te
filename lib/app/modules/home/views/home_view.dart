@@ -9,13 +9,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
-import '../../../controllers/auth_controller.dart';
 import '../controllers/home_controller.dart';
+import '../widgets/employee_tab.dart';
 import '../widgets/home_tab.dart';
 
 class HomeView extends StatelessWidget {
-  final authC = Get.find<MainController>();
-  final homeC = Get.find<HomeController>();
+  const HomeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +24,13 @@ class HomeView extends StatelessWidget {
           initialIndex: 0,
           length: 4,
           child: Scaffold(
-            appBar: (controller.tabIndex == 1) ? controller.tabBar() : null,
+            appBar: (controller.tabIndex == 1 || controller.tabIndex == 3)
+                ? controller.bottomTabBar()
+                : null,
             body: IndexedStack(
               index: controller.tabIndex,
               children: [
-                const HomeTab(),
+                HomeTab(),
                 const TabBarView(
                   children: [
                     HistoryCutiTab(),
@@ -39,6 +40,7 @@ class HomeView extends StatelessWidget {
                   ],
                 ),
                 StatisticTab(),
+                EmployeeTab(),
                 AccountTab(),
               ],
             ),
@@ -65,6 +67,13 @@ class HomeView extends StatelessWidget {
                   icon: const Icon(Icons.insert_chart_outlined),
                   title: const Text("Statistic"),
                   selectedColor: Colors.green,
+                ),
+
+                /// Search
+                SalomonBottomBarItem(
+                  icon: const Icon(Icons.account_balance_outlined),
+                  title: const Text("Employee"),
+                  selectedColor: Colors.purple,
                 ),
 
                 /// Profile

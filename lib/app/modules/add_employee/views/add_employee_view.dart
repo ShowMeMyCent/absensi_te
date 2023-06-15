@@ -1,38 +1,17 @@
-import 'dart:convert';
-
-import 'package:absensi_te/app/data/models/province_model.dart';
-import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
 
-import '../../../controllers/auth_controller.dart';
-import '../../../data/models/city_model.dart';
 import '../controllers/add_employee_controller.dart';
 
 class AddEmployeeView extends GetView<AddEmployeeController> {
-  final authC = Get.find<MainController>();
-
+  const AddEmployeeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
-        title: Text('Add Employee'),
+        title: const Text('AddEmployeeView'),
         centerTitle: true,
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              colors: [
-                Color.fromARGB(255, 106, 187, 254),
-                Color.fromARGB(251, 1, 109, 197),
-              ],
-            ),
-          ),
-        ),
       ),
       body: Stack(
         children: [
@@ -190,7 +169,7 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
                               ),
                             ),
                             onChanged: (value) {
-                              controller.levelC.text = value!;
+                              controller.levelC.text = value!.toLowerCase();
                             },
                           ),
 
