@@ -29,7 +29,7 @@ class AdminView extends GetView {
             body: IndexedStack(
               index: controller.tabIndex,
               children: [
-                const HomeTab(),
+                HomeTab(),
                 const TabBarView(
                   children: [
                     HistoryCutiTab(),

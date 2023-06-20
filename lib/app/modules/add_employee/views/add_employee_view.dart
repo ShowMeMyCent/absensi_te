@@ -1,11 +1,19 @@
+import 'dart:convert';
+
+import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 
+import '../../../controllers/auth_controller.dart';
+import '../../../data/models/city_model.dart';
+import '../../../data/models/province_model.dart';
 import '../controllers/add_employee_controller.dart';
 
 class AddEmployeeView extends GetView<AddEmployeeController> {
-  const AddEmployeeView({Key? key}) : super(key: key);
+  final authC = Get.find<MainController>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

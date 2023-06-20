@@ -15,7 +15,7 @@ dependencies:
   firebase_auth: 4.6.1
   cloud_firestore: 4.7.1
   dropdown_search: ^3.0.1
-  http: ^1.0.0
+  http: 1.0.0
   dio: 5.1.2
   shared_preferences: 2.1.1
   get_storage: 2.1.1
