@@ -9,6 +9,9 @@ abstract class Routes {
   static const SPLASHSCREEN = _Paths.SPLASHSCREEN;
   static const ADMIN = _Paths.ADMIN;
   static const MAINVIEW = _Paths.MAINVIEW;
+  static const UNDER_DEV = _Paths.UNDER_DEV;
+  static const ABSENSI = _Paths.ABSENSI;
+  static const PENGAJUAN = _Paths.PENGAJUAN;
 }
 
 abstract class _Paths {
@@ -19,4 +22,7 @@ abstract class _Paths {
   static const SPLASHSCREEN = '/splashscreen';
   static const ADMIN = '/admin';
   static const MAINVIEW = '/mainview';
+  static const UNDER_DEV = '/under-dev';
+  static const ABSENSI = '/absensi';
+  static const PENGAJUAN = '/pengajuan';
 }

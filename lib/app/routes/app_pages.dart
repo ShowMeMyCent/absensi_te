@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/absensi/bindings/absensi_binding.dart';
+import '../modules/absensi/views/absensi_view.dart';
 import '../modules/add_employee/bindings/add_employee_binding.dart';
 import '../modules/add_employee/views/add_employee_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -9,6 +11,10 @@ import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/mainview/bindings/mainview_binding.dart';
 import '../modules/mainview/views/mainview_view.dart';
+import '../modules/pengajuan/bindings/pengajuan_binding.dart';
+import '../modules/pengajuan/views/pengajuan_view.dart';
+import '../modules/underDev/bindings/under_dev_binding.dart';
+import '../modules/underDev/views/under_dev_view.dart';
 
 part 'app_routes.dart';
 
@@ -42,6 +48,21 @@ class AppPages {
       name: _Paths.MAINVIEW,
       page: () => const MainviewView(),
       binding: MainviewBinding(),
+    ),
+    GetPage(
+      name: _Paths.UNDER_DEV,
+      page: () => const UnderDevView(),
+      binding: UnderDevBinding(),
+    ),
+    GetPage(
+      name: _Paths.ABSENSI,
+      page: () => const AbsensiView(),
+      binding: AbsensiBinding(),
+    ),
+    GetPage(
+      name: _Paths.PENGAJUAN,
+      page: () => PengajuanView(),
+      binding: PengajuanBinding(),
     ),
   ];
 }
