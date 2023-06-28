@@ -13,9 +13,18 @@ class StatisticTab extends StatelessWidget {
       child: Stack(
         children: [
           Container(
-            width: Get.width,
             height: Get.height,
-            color: Color.fromARGB(255, 244, 244, 244),
+            width: Get.width,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [
+                  Color.fromARGB(255, 106, 187, 254),
+                  Color.fromARGB(251, 1, 109, 197),
+                ],
+              ),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(10.0),

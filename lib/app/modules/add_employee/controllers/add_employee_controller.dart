@@ -1,23 +1,20 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
+import 'package:flutter/material.dart';
 
 class AddEmployeeController extends GetxController {
-  //TODO: Implement AddEmployeeController
+  final db = FirebaseFirestore.instance;
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
+  TextEditingController nipC = TextEditingController();
+  TextEditingController nameC = TextEditingController();
+  // TextEditingController unitC = TextEditingController();
+  TextEditingController emailC = TextEditingController();
+  TextEditingController passC = TextEditingController();
+  TextEditingController notelpC = TextEditingController();
+  TextEditingController levelC = TextEditingController();
+  TextEditingController provinceCx = TextEditingController();
+  TextEditingController cityC = TextEditingController();
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
+  RxString provinceId = ''.obs;
+  RxString cityId = ''.obs;
 }

@@ -5,14 +5,24 @@ abstract class Routes {
   Routes._();
   static const HOME = _Paths.HOME;
   static const LOGIN = _Paths.LOGIN;
-  static const SPLASHSCREEN = _Paths.SPLASHSCREEN;
   static const ADD_EMPLOYEE = _Paths.ADD_EMPLOYEE;
+  static const SPLASHSCREEN = _Paths.SPLASHSCREEN;
+  static const ADMIN = _Paths.ADMIN;
+  static const MAINVIEW = _Paths.MAINVIEW;
+  static const UNDER_DEV = _Paths.UNDER_DEV;
+  static const ABSENSI = _Paths.ABSENSI;
+  static const PENGAJUAN = _Paths.PENGAJUAN;
 }
 
 abstract class _Paths {
   _Paths._();
   static const HOME = '/home';
   static const LOGIN = '/login';
-  static const SPLASHSCREEN = '/splashscreen';
   static const ADD_EMPLOYEE = '/add-employee';
+  static const SPLASHSCREEN = '/splashscreen';
+  static const ADMIN = '/admin';
+  static const MAINVIEW = '/mainview';
+  static const UNDER_DEV = '/under-dev';
+  static const ABSENSI = '/absensi';
+  static const PENGAJUAN = '/pengajuan';
 }

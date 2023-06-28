@@ -10,14 +10,14 @@ class EmployeeAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text('Employee'),
+      title: const Text('Employee'),
       elevation: 0,
       actions: [
         IconButton(
           onPressed: () {
             Get.toNamed(Routes.ADD_EMPLOYEE);
           },
-          icon: Icon(Icons.add),
+          icon: const Icon(Icons.add),
         )
       ],
       flexibleSpace: Container(
@@ -36,5 +36,5 @@ class EmployeeAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
