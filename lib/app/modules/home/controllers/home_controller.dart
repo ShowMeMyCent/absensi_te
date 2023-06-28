@@ -17,7 +17,7 @@ class HomeController extends GetxController {
     update();
   }
 
-  bottomTabBar() {
+  upTabBar() {
     if (tabIndex == 1) {
       return HisTabBar();
     } else if (tabIndex == 3) {

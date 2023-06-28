@@ -24,7 +24,7 @@ class AdminView extends GetView {
           length: 4,
           child: Scaffold(
             appBar: (controller.tabIndex == 1 || controller.tabIndex == 3)
-                ? controller.bottomTabBar()
+                ? controller.upTabBar()
                 : null,
             body: IndexedStack(
               index: controller.tabIndex,

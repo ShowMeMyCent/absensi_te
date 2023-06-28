@@ -173,6 +173,10 @@ class MainController extends GetxController {
 
   void logout() async {
     await FirebaseAuth.instance.signOut();
-    Get.offAllNamed(Routes.LOGIN);
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    // Clear all shared preferences data
+    await prefs.clear();
+    await Get.offAllNamed(Routes.LOGIN);
   }
 }

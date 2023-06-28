@@ -97,7 +97,7 @@ class AbsensiView extends GetView<AbsensiController> {
                                     ),
                                   ],
                                 ),
-                                SizedBox(height: 30),
+                                SizedBox(height: 25),
                                 ElevatedButton(
                                   onPressed: () {},
                                   child: Text("Clock in"),
